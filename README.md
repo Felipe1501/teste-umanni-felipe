@@ -25,7 +25,7 @@ To run the application using Docker, follow these steps:<br>
 1. Clone the repository:<br>
 
 git clone https://github.com/Felipe1501/teste-umanni-felipe.git<br>
-cd teste-umanni-felipe
+cd blog-felipe && cd back
 
 2. Build and start the containers:<br>
 
@@ -40,7 +40,7 @@ If you prefer to run the application without Docker, follow these steps:<br>
 1. Clone the repository:
 
 git clone https://github.com/Felipe1501/teste-umanni-felipe.git<br>
-cd teste-umanni-felipe
+cd blog-felipe && cd back
 
 2. Install Ruby dependencies:<br>
 
@@ -65,4 +65,5 @@ rails server
 7. Open the application in your browser at: <br>
 http://localhost:3000
 <br><br>
-If you encounter any issues or have questions, please open an issue on the repository. 
+
+# If you encounter any issues or have questions, please open an issue on the repository. 
