@@ -1,0 +1,10 @@
+<%= form_with model: [post, comment], local: true do |form| %>
+    <div>
+      <%= form.label :content, "Seu comentário" %>
+      <%= form.text_area :content %>
+    </div>
+    <div>
+      <%= form.submit "Comentar" %>
+    </div>
+  <% end %>
+  

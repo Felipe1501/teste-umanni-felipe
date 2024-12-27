@@ -1,0 +1,8 @@
+<div id="<%= dom_id(comment) %>">
+  <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+
+  <% if comment.user == current_user %>
+    <%= link_to "Editar", edit_post_comment_path(comment.post, comment) %> |
+    <%= button_to "Deletar", post_comment_path(comment.post, comment), method: :delete, data: { turbo_confirm: "Tem certeza?" } %>
+  <% end %>
+</div>

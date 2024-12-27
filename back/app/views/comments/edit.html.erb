@@ -1,0 +1,9 @@
+<h2>Editar Comentário</h2>
+
+<%= form_with(model: [@post, @comment], local: false) do |form| %>
+  <div>
+    <%= form.label :content, "Editar Comentário" %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit "Atualizar Comentário" %>
+<% end %>

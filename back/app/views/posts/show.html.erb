@@ -5,6 +5,20 @@
 <div>
   <%= link_to "Editar Post", edit_post_path(@post) %> |
   <%= link_to "Voltar para os posts", posts_path %>
-
   <%= button_to "Deletar Post", @post, method: :delete %>
+
+<h2>Comentários</h2>
+<% @post.comments.where.not(id: nil).each do |comment| %>
+  <p>
+    <strong>
+      <%= comment.user&.email || "Usuário não identificado" %>:
+    </strong> <%= comment.content %>
+  </p>
+  <% if comment.user == current_user %>
+    <%= link_to "Editar", edit_post_comment_path(@post, comment) %> |
+    <%= link_to "Excluir", post_comment_path(@post, comment), method: :delete, data: { confirm: "Você tem certeza?" } %>
+  <% end %>
+<% end %>
+
+  <%= render 'comments/form', post: @post, comment: @comment %>
 </div>
