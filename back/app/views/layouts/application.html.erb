@@ -2,39 +2,37 @@
 <html>
   <head>
     <title><%= content_for(:title) || "Blog Umanni" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
-
   <body>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav aria-label="Main Navigation">
+      <%= link_to "Home", root_path, class: "btn btn-primary" %>
+      <% if user_signed_in? %>
+        <%= link_to "Nova Postagem", new_post_path, class: "btn btn-secondary" %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-danger", data: { confirm: "Você tem certeza?" } %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-secondary" %>
+      <% end %>
+    </nav>
     
-    <% if user_signed_in? %>
-      <p>
-        Olá, <%= current_user.email %>. 
-        <%= link_to "Sair", destroy_user_session_path, method: :delete, data: { confirm: "Você tem certeza?" } %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to "Entrar", new_user_session_path %> ou <%= link_to "Cadastrar", new_user_registration_path %>
-      </p>
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
     <% end %>
-    
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
-    <%= javascript_importmap_tags %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
+    <footer>
+      <p>Teste Felipe Umanni &copy; 2024</p>
+    </footer>
   </body>
 </html>

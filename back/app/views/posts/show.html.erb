@@ -1,24 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<p class="notice"><%= notice %></p>
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Editar Post", edit_post_path(@post) %> |
-  <%= link_to "Voltar para os posts", posts_path %>
-  <%= button_to "Deletar Post", @post, method: :delete %>
+<div class="post-actions">
+  <%= link_to "Editar Post", edit_post_path(@post), class: "btn btn-primary" %>
+  <%= link_to "Voltar para os posts", posts_path, class: "btn btn-secondary" %>
+  <%= button_to "Deletar Post", @post, method: :delete, class: "btn btn-danger", data: { confirm: "Você tem certeza?" } %>
+</div>
 
-<h2>Comentários</h2>
-<% @post.comments.where.not(id: nil).each do |comment| %>
-  <p>
-    <strong>
-      <%= comment.user&.email || "Usuário não identificado" %>:
-    </strong> <%= comment.content %>
-  </p>
-  <% if comment.user == current_user %>
-    <%= link_to "Editar", edit_post_comment_path(@post, comment) %> |
-    <%= link_to "Excluir", post_comment_path(@post, comment), method: :delete, data: { confirm: "Você tem certeza?" } %>
+<div class="comments-section">
+  <h2>Comentários</h2>
+  <% if @post.comments.any? %>
+    <div class="comments-list">
+      <% @post.comments.where.not(id: nil).each do |comment| %>
+        <div class="comment">
+          <p>
+            <strong>
+              <%= comment.user&.email || "Usuário não identificado" %>:
+            </strong>
+            <%= comment.content %>
+          </p>
+          <% if comment.user == current_user %>
+            <div class="comment-actions">
+              <%= link_to "Editar", edit_post_comment_path(@post, comment), class: "edit-btn" %> |
+              <%= link_to "Excluir", post_comment_path(@post, comment), method: :delete, class: "delete-btn", data: { confirm: "Você tem certeza?" } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="no-comments">Nenhum comentário ainda. Seja o primeiro a comentar!</p>
   <% end %>
-<% end %>
+</div>
 
+<div class="comment-form">
+  <h3>Adicionar um Comentário</h3>
   <%= render 'comments/form', post: @post, comment: @comment %>
 </div>

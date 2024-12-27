@@ -1,16 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Posts" %>
+<% content_for :title, "Postagens" %>
 
-<h1>Posts</h1>
+<h1>Postagens</h1>
 
 <div id="posts">
   <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
+      <div class="post">
+        <%= render post %>
+        <p>
+          <%= link_to "Mais sobre o post", post, class: "btn btn-primary" %>
+        </p>
+      </div>
+    <% end %>
 </div>
 
-<%= link_to "New post", new_post_path %>
+<p>
+  <%= link_to "Criar Postagem", new_post_path, class: "btn btn-secondary" %>
+</p>

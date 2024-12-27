@@ -1,10 +1,229 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+:root {
+    --primary-color: #007bff; 
+    --secondary-color: #6c757d; 
+    --success-color: #286ea7; 
+    --danger-color: #dc3545; 
+    --background-light: #f9f9f9; 
+    --border-color: #ddd; 
+    --text-color: #333;
+}
+  
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-color);
+}
+  
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+  
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-light);
+}
+  
+.notice, .alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+  
+.notice {
+    background-color: var(--success-color);
+    color: white;
+}
+  
+.alert {
+    background-color: var(--danger-color);
+    color: white;
+}
+  
+nav {
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 16px;
+    transition: opacity 0.3s ease;
+}
+  
+nav a:hover {
+    opacity: 0.7;
+}
+  
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-top: 20px;
+}
+  
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 10px;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+.btn-secondary {
+    background-color: var(--secondary-color);
+}
+  
+.btn-danger {
+    background-color: var(--danger-color);
+}
+  
+.btn:hover {
+    opacity: 0.9;
+}
+  
+#posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.post {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.post p {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+  
+.comments-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+  
+.comments-list {
+    margin-bottom: 20px;
+}
+  
+.comment {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--background-light);
+    margin-bottom: 15px;
+}
+  
+.comment p {
+    margin: 0;
+    color: var(--text-color);
+}
+  
+.comment-actions {
+    margin-top: 10px;
+}
+  
+.edit-btn,
+.delete-btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s;
+}
+  
+.delete-btn {
+    background-color: var(--danger-color);
+}
+  
+.edit-btn:hover,
+.delete-btn:hover {
+    opacity: 0.8;
+}
+  
+form {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: white;
+    max-width: 600px;
+}
+  
+form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+  
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+}
+  
+form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+  
+form button:hover {
+    background-color: #0056b3; 
+}
+  
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}

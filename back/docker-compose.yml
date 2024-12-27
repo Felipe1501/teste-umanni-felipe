@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .  
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: 3.2.3
+    image: rails-app
+    container_name: rails_app
+    ports:
+      - "3000:3000" 
+    environment:
+      RAILS_ENV: development
+      DATABASE_URL: sqlite3://db/production.sqlite3
+    volumes:
+      - .:/rails 
+    depends_on:
+      - db
+    command: ["./bin/rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+
+  db:
+    image: postgres:14-alpine
+    container_name: rails_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: rails_app_development
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db-data:
